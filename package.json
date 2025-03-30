@@ -14,7 +14,7 @@
     "markdown-it-mathjax3-tao",
     "esbuild",
     "vue-demi",
-	"vitepress-plugin-pagefind",
+	"vitepress-plugin-pagefind"
   ],
   "scripts": {
     "docs:dev": "vitepress dev docs",
