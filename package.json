@@ -13,7 +13,8 @@
    "trustedDependencies": [
     "markdown-it-mathjax3-tao",
     "esbuild",
-    "vue-demi"
+    "vue-demi",
+	"vitepress-plugin-pagefind",
   ],
   "scripts": {
     "docs:dev": "vitepress dev docs",
