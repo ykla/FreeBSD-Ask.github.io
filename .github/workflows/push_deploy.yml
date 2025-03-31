@@ -1,4 +1,4 @@
-name: 手动部署 GitPage
+name: 🔗 手动部署 GitPage
 
 on: 
   repository_dispatch:
