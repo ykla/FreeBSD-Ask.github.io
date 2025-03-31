@@ -2,7 +2,7 @@
 
 **Please do not submit any PR to submodules of this project! It should be submitted to <https://github.com/FreeBSD-Ask/FreeBSD-Ask>**
 
-请勿直接像本项目的子模块提交任何 PR！若要提交，请转向子模块仓库 <https://github.com/FreeBSD-Ask/FreeBSD-Ask>。
+请勿直接向本项目的子模块提交任何 PR！若要提交，请转向子模块仓库 <https://github.com/FreeBSD-Ask/FreeBSD-Ask>。
 
 ## 架构模式
 
