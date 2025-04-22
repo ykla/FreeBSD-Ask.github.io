@@ -1,4 +1,4 @@
-# FreeBSD 从入门到跑路 VitePress 镜像项目
+# FreeBSD 艺术科学哲学导论 VitePress 镜像项目
 
 镜像站点：<https://docs.bsdcn.org/>
 
