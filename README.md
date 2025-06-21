@@ -1,4 +1,4 @@
-# FreeBSD 从入门到追忆 VitePress 镜像项目
+# FreeBSD 操作系统研究导论 VitePress 镜像项目
 
 镜像站点：<https://docs.bsdcn.org/>
 
