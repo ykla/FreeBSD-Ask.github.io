@@ -133,10 +133,10 @@ jobs:
           cd pdf-generator # 此时应位于 /pdf-generator?
           pwd
           python mdconv.py ../docs
-          mv build/final.pdf build/$(date +'%Y.%m.%d').pdf
-          mv build/final.epub build/$(date +'%Y.%m.%d').epub
-          mv build/$(date +'%Y.%m.%d').pdf ../docs/public
-          mv build/$(date +'%Y.%m.%d').epub ../docs/public
+          mv build/final.pdf build/bsdbook.pdf
+          mv build/final.epub build/bsdbook.epub
+          mv build/bsdbook.pdf ../docs/public
+          mv build/bsdbook.epub ../docs/public
         env:
           PYTHONPATH: ${{ github.workspace }}/pdf-generator    
           
