@@ -96,13 +96,50 @@ jobs:
           fetch-depth: 0
 
       - name: 更新子模块
-        run: git submodule update --init --remote
-
+        run: |
+          git submodule update --init --remote
+          pwd
+         
       - name: 添加交换空间
         uses: actionhippie/swap-space@v1
         with:
           size: 16G
+          
+      - name: 安装字体
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ttf-wqy-microhei ttf-wqy-zenhei fonts-noto-core fonts-noto-cjk  
 
+      - name: 检出 gitbook-pdf-export 工具
+        uses: actions/checkout@v5
+        with:
+          repository: FreeBSD-Ask/gitbook-pdf-export
+          path: pdf-generator
+          # 此时应位于 /pdf-generator
+          
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: 安装 Python 依赖
+        run: |
+          sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0 libpangocairo-1.0-0
+          pip install weasyprint mistune pygments EbookLib beautifulsoup4
+          
+      - name: 生成 PDF 文档
+        run: |
+          pwd
+          cd pdf-generator # 此时应位于 /pdf-generator?
+          pwd
+          python mdconv.py ../docs
+          mv build/final.pdf build/$(date +'%Y.%m.%d').pdf
+          mv build/final.epub build/$(date +'%Y.%m.%d').epub
+          mv build/$(date +'%Y.%m.%d').pdf ../docs/public
+          mv build/$(date +'%Y.%m.%d').epub ../docs/public
+        env:
+          PYTHONPATH: ${{ github.workspace }}/pdf-generator    
+          
       - name: 设置 bun 环境
         uses: oven-sh/setup-bun@v2
         with:
