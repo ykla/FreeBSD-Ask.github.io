@@ -130,7 +130,7 @@ jobs:
       - name: 生成 PDF 文档
         run: |
           pwd
-          cd pdf-generator # 此时应位于 /pdf-generator?
+          cd pdf-generator # 此时应位于 /pdf-generator
           pwd
           python mdconv.py ../docs
           mv build/final.pdf build/bsdbook.pdf
