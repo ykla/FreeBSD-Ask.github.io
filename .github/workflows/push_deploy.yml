@@ -35,7 +35,7 @@ jobs:
         with:
           bun-version: latest
       - name: 复制首页
-        run:  echo "test" >> docs/index1.md         
+        run:  cp -a docs/README.md docs/index.md         
       - name: Install dependencies
         run:  bun install
       - name: Build with VitePress
