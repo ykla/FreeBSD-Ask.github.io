@@ -39,7 +39,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ttf-wqy-microhei ttf-wqy-zenhei fonts-noto-core fonts-noto-cjk  
           pwd
-          cp -a docs/README.md docs/index.md
 
       - name: 检出 gitbook-pdf-export 工具
         uses: actions/checkout@v5
