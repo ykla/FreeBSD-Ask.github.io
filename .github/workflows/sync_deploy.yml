@@ -99,6 +99,7 @@ jobs:
         run: |
           git submodule update --init --remote
           pwd
+          cp docs/README.md docs/index.md
          
       - name: 添加交换空间
         uses: actionhippie/swap-space@v1
