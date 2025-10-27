@@ -34,11 +34,12 @@ jobs:
         uses: actionhippie/swap-space@v1
         with:
            size: 16G
-      - name: 安装字体
+      - name: 安装字体、复制首页
         run: |
           sudo apt-get update
           sudo apt-get install -y ttf-wqy-microhei ttf-wqy-zenhei fonts-noto-core fonts-noto-cjk  
           pwd
+          cp docs/README.md docs/index.md
 
       - name: 检出 gitbook-pdf-export 工具
         uses: actions/checkout@v5
