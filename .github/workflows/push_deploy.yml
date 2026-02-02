@@ -41,7 +41,7 @@ jobs:
             ls -l
             ls -l /usr/obj/usr/src/repo
             du -hs /usr/obj/usr/src/repo
-            cp -a /usr/obj/usr/src/repo/* /home/runner/work/taophilosophy/taophilosophy.github.io/docs/public  
+            cp -a /usr/obj/usr/src/repo/* /home/runner/work/FreeBSD-Ask.github.io/taophilosophy.github.io/docs/public  
             
       - uses: oven-sh/setup-bun@v2
         with:
