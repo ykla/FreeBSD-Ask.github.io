@@ -34,6 +34,7 @@ jobs:
           mem: 10240
           run: |
             pkg update -f 
+            pkg ins -y git
             cd /usr/src
             git clone --depth=1 https://github.com/freebsd/freebsd-src.git /usr/src
             make -j8 buildworld && make -j8 buildkernel && make -j8 packages
