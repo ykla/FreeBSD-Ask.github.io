@@ -2,7 +2,6 @@ name: 🔗 手动部署 GitPage
 
 on: 
   repository_dispatch:
-  workflow_dispatch:
   
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
@@ -15,10 +14,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setting TimeZone to UTC+8
-        uses: szenius/set-timezone@v2.0
-        with:
-          timezoneLinux: "Asia/Shanghai"
       - name: Show the timezone
         run: |
            date 
@@ -26,18 +21,36 @@ jobs:
            free -hg
            pwd
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0 # lastUpdated 需要
           submodules: recursive
-  
+      - name: Build inside FreeBSD VM
+        uses: vmactions/freebsd-vm@v1.3.8
+        with:
+          release: "15.0"
+          arch: x86_64
+          sync-time: true
+          mem: 10240
+          run: |
+            pkg update -f 
+            cd /usr/src
+            git clone --depth=1 https://github.com/freebsd/freebsd-src.git /usr/src
+            make -j8 buildworld && make -j8 buildkernel && make -j8 packages
+            ls -l
+            ls -l /usr/obj/usr/src/repo
+            du -hs /usr/obj/usr/src/repo
+            cp -a /usr/obj/usr/src/repo/* /home/runner/work/taophilosophy/taophilosophy.github.io/docs/public  
+            
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+          
       - name: 复制首页
         run:  |
           rm docs/index.md  
-          cp -a docs/README.md docs/index.md         
+          cp -a docs/README.md docs/index.md     
+          
       - name: Install dependencies
         run:  bun install
       - name: Build with VitePress
@@ -47,4 +60,3 @@ jobs:
         run: |
          du -sh docs/.vitepress/dist
          du -sh docs
-         date
