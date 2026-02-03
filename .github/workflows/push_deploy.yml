@@ -36,16 +36,18 @@ jobs:
             pkg update -f 
             ls -l /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io/
             pwd
-            echo "222" > 1.txt
-            cp 1.txt /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io/docs/
-            
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-          
+            pkg ins -y git
+            cd /usr/src
+            git clone --depth=1 https://github.com/freebsd/freebsd-src.git /usr/src
+            make -j8 buildworld && make -j8 buildkernel && make -j8 packages
+            ls -l
+            ls -l /usr/obj/usr/src/repo
+            du -hs /usr/obj/usr/src/repo
+            cp -a /usr/obj/usr/src/repo/* /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io/docs/public/
+
       - name: 复制首页
         run:  |
-          ls /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io
+          ls -al /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io
           pwd
-
+          
         
