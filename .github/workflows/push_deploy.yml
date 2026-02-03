@@ -34,10 +34,10 @@ jobs:
           mem: 10240
           run: |
             pkg update -f 
-            ls -l /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io
+            ls -l /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io/
             pwd
-            touch 1
-            cp 1 /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io
+            echo "222" > 1.txt
+            cp 1.txt /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io/docs/
             
       - uses: oven-sh/setup-bun@v2
         with:
