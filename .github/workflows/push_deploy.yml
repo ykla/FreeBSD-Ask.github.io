@@ -34,14 +34,10 @@ jobs:
           mem: 10240
           run: |
             pkg update -f 
-            pkg ins -y git
-            cd /usr/src
-            git clone --depth=1 https://github.com/freebsd/freebsd-src.git /usr/src
-            make -j8 buildworld && make -j8 buildkernel && make -j8 packages
-            ls -l
-            ls -l /usr/obj/usr/src/repo
-            du -hs /usr/obj/usr/src/repo
-            cp -a /usr/obj/usr/src/repo/* /home/runner/work/FreeBSD-Ask.github.io/taophilosophy.github.io/docs/public  
+            ls -l /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io
+            pwd
+            touch 1
+            cp 1 /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io
             
       - uses: oven-sh/setup-bun@v2
         with:
@@ -49,16 +45,7 @@ jobs:
           
       - name: 复制首页
         run:  |
-          rm docs/index.md  
-          cp -a docs/README.md docs/index.md  
-          
-      - name: Install dependencies
-        run:  bun install
-      - name: Build with VitePress
-        run:  bun --bun run docs:build
+          ls /home/runner/work/FreeBSD-Ask.github.io/FreeBSD-Ask.github.io
+          pwd
 
-      - name: Show Usage 
-        run: |
-         du -sh docs/.vitepress/dist
-         du -sh docs
         
